@@ -2,20 +2,34 @@
 //  AppDelegate.swift
 //  taskapp
 //
-//  Created by 齋藤　綾乃 on 2020/08/09.
+//  Created by ayano-s on 2020/08/09.
 //  Copyright © 2020 ayano-s. All rights reserved.
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //ユーザーへ通知許可を求める
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization
+        }
+        center.delegate = self
+        
         return true
+    }
+    
+    //アプリがフォアグランドの時に通知を受け取る時に呼ばれるメソッド
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    completionHandler([.alert, .sound])
     }
 
     // MARK: UISceneSession Lifecycle

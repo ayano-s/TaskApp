@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  taskapp
 //
-//  Created by 齋藤　綾乃 on 2020/08/09.
+//  Created by ayano-s on 2020/08/09.
 //  Copyright © 2020 ayano-s. All rights reserved.
 //
 
